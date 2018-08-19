@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+<div class="row padding-top padding-bottom">
+	<div class="col-md-1"></div>
+	<div class="col-md-11 main">
+		<h1>{{ item.name }}</h1>
+		<p class="description">
+		{{item.description}}
+		</p>
+		
+		{% if allowedToEdit == True %}
+		<a href="{{url_for('editItem', category_name = item.category.name, item_id = item.id )}}">
+			<button class="btn btn-default btn-edit" id="new-menu-item">
+				Edit Item
+			</button>
+		</a>
+		<a href="{{url_for('deleteItem', category_name = item.category.name, item_id = item.id )}}">
+			<button class="btn btn-default btn-delete" id="delete-restaurant">
+				Delete Item
+			</button>
+		</a>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="header">
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-7"><a href="{{url_for('showCategories')}}"><h1>Catalog App</h1></a></div>
+		<div class="col-md-3 padding-none">
+			{% if loggedIn == True %}
+			<a href="{{url_for('disconnect')}}">
+          
+				<button class="btn btn-default" id="logout">
+					logout
+				</button>
+			</a>
+			{% endif %}
+			{% if not loggedIn %}
+			<a href="{{url_for('showLogin')}}">
+          
+				<button class="btn btn-default" id="login">
+					Login
+				</button>
+			</a>
+			{% endif %}
+			</a>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>
